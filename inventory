@@ -1,0 +1,1 @@
+myFirstVM ansible_host=13.80.137.146 ansible_port=22 ansible_user=salim

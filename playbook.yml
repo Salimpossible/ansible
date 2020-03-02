@@ -1,0 +1,7 @@
+---
+- hosts: myFirstVM
+  become: yes
+  roles:
+    - ansible-role-java
+    - ansible-role-jenkins
+    

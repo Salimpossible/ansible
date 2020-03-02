@@ -1,0 +1,32 @@
+sudo echo
+"[nginx]
+name=nginx repo
+baseurl=http://nginx.org/packages/mainline/centos/7/$basearch/
+gpgcheck=0
+enabled=1"
+>> /etc/yum.repos.d/nginx.repo
+
+sudo yum install nginx
+
+sudo systemctl enable nginx
+sudo systemctl start nginx
+
+# sudo firewall-cmd --permanent --zone=public --add-service=http
+# sudo firewall-cmd --permanent --zone=public --add-service=https
+# sudo firewall-cmd --reload
+
+#sudo ss -tulpn
+#curl -I http://IPVM1
+
+#sudo vi /etc/nginx/conf.d/default.conf
+
+sudo mkdir /etc/nginx/sites-available
+sudo mkdir /etc/nginx/sites-enabled
+
+line in file dans /etc/nginx/nginx.conf
+include /etc/nginx/site-enabled/*;
+
+sudo cp /vagrant_data/jenkins.conf /etc/nginx/sites-available/jenkins.conf
+sudo ln -s /etc/nginx/sites-available/jenkins /etc/nginx/sites-enabled/jenkins
+sudo rm /etc/nginx/sites-enabled/default
+sudo systemctl reload nginx
